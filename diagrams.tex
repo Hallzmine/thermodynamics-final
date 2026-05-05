@@ -1,0 +1,114 @@
+% diagrams.tex
+% TikZ diagrams for the Rankine Cycle
+
+\newcommand{\tsDiagram}{
+\begin{tikzpicture}[
+  scale=1.2, every node/.style={scale=1.2}, font=\small,
+  > = latex,
+  dot/.style = {draw,fill,circle,inner sep=1pt},
+  arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position .55 with \arrow{>}}}
+  ]
+  \draw[<->] (0,4) node[above] {$T$} |- (4,0) node[right] {$s$};
+  \node[dot,label={above:$3$}] (@3) at (3,2.4) {};
+  \node[dot,label={below:$4$}] (@4) at (3,1) {};
+  \node[dot,label={below:$1$}] (@5) at (1,1) {};
+  \node[dot,label={above:$2$}] (@6) at (1,1.5) {};
+  \draw[arrow inside] (1.5,2) -- (2.4,2);
+  \draw[arrow inside] (2.4,2) -- (@3);
+  \draw[arrow inside] (@3) -- (@4);
+  \draw[arrow inside] (@4) -- (@5);
+  \draw[arrow inside] (@5) -- (@6);
+  \draw[arrow inside] (@6) -- (1.5,2);
+\end{tikzpicture}
+}
+
+\newcommand{\pvDiagram}{
+\begin{tikzpicture}[
+  scale=1.2, every node/.style={scale=1.2}, font=\small,
+  > = latex,
+  dot/.style = {draw,fill,circle,inner sep=1pt},
+  arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position .55 with \arrow{>}}}
+  ]
+  \draw[<->] (0,4) node[above] {$P$} |- (4,0) node[right] {$v$};
+  \node[dot,label={below:$1$}] (@1) at (1,1) {};
+  \node[dot,label={above:$2$}] (@2) at (1,2) {};
+  \node[dot,label={above:$3$}] (@3) at (2.5,2) {};
+  \node[dot,label={below:$4$}] (@4) at (3.25,1) {};
+  \draw[arrow inside] (@1) -- (@2);
+  \draw[arrow inside] (@2) -- (@3);
+  \draw[arrow inside] (@3) to[bend right=15] (@4);
+  \draw[arrow inside] (@4) -- (@1);  
+\end{tikzpicture}
+}
+
+\newcommand{\rankineSchematic}{
+\begin{tikzpicture}[
+  scale=1.2, every node/.style={scale=1.2}, font=\small,
+  > = latex,
+  dot/.style = {draw,fill,circle,inner sep=1pt},
+  arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position .55 with \arrow{>}}}
+  ]
+  \node[rectangle, draw=black, minimum width=2cm, minimum height=2cm] (boiler) {Boiler};
+  \node[trapezium, draw=black, right=2 cm of boiler, minimum height=2cm, minimum width=2.5cm, trapezium angle=72, trapezium stretches body, shape border rotate=90] (turbine) {Turbine};
+  \node[rectangle, draw=black, below=2 cm of turbine, minimum width=2 cm, minimum height=2 cm] (cond) {Condenser};
+  \node[dot,label={right:$4$}, below=1cm of turbine] (@1) {};
+  \node[dot,label={right:$1$}, below=1.5cm of cond] (@2) {};
+  \node[circle,    draw=black, left=1.5cm of @2] (pump) {Pump};
+  \node[dot,label={left:$2$}] (@3) at (boiler |- pump) {};
+  \node[dot,label={above:$3$}, right=1 cm of boiler] (@4) {};
+  \draw[->] (boiler) -- (turbine);
+  \draw[->] (turbine) -- (cond);
+  \draw[->] (cond) -- (@2) -- (pump);
+  \draw[->] (pump) -- (@3) -- (boiler);
+  \draw[-{implies}, double] (pump) ++(0,-1.2) -- (pump) node[pos=0, below] {$W_p$};
+  \draw[-{implies}, double, decorate, decoration={snake, amplitude=1mm, segment length=4mm, post length=1mm}] (boiler) ++(0,1.5) -- (boiler) node[pos=0, above] {$Q_{in}$};
+  \draw[-{implies}, double] (turbine) -- ++(1.5,0) (turbine) node[pos=1, right] {$W_t$};
+  \draw[-{implies}, double, decorate, decoration={snake, amplitude=1mm, segment length=4mm, post length=1mm}] (cond) -- ++(1.5,0) (cond) node[pos=1, right] {$Q_{out}$};
+\end{tikzpicture}
+
+}
+
+\newcommand{\stateTable}{
+  \begin{tabular}{|c|cccccc|}
+  \hline
+  Point & P, (kPa) & T, ($^\circ$C) & x & s, (kJ/($^\circ$K$\cdot$kg)) & h, (kJ/kg) & v, (m$^3$/kg) \\
+  \hline
+  \hline
+  1 & 10.0 & 45.8 & 0.00 & 0.65 & 192 & 0.00101 \\
+  2 & 8,000 & 46.1 & -100\tablefootnote{EES outputs a quality value of -100 for compressed liquids.} & 0.65 & 200 & 0.00101 \\
+  3 & 8,000 & 480 & 1.00 & 6.67 & 3350 & 0.0404\\
+  4 & 10.0 & 45.8 & 0.80 & 6.67 & 2110 & 11.76\\
+  \hline
+  \end{tabular}
+}
+
+
+\newcommand{\compTable}{
+  \begin{tabular}{|c|l|l|}
+  \hline
+  Points & Component & Variables \\
+  \hline 
+  \hline
+  1-2 & Pump & Isochoric, Isentropic. \\
+  2-3 & Boiler & Isobaric. \\
+  3-4 & Turbine & Isentropic. \\
+  4-1 & Condenser & Isochoric, Isothermal. \\
+  \hline
+  \end{tabular}
+}
+
+\newcommand{\anaTable}{
+  \begin{tabular}{|c|c|}
+  \hline
+  Variable & value \\
+  \hline 
+  \hline
+  $w_t$ & 1240 kJ/kg \\
+  $w_p$ & 8.06 kJ/kg \\
+  $q_{\tn{in}}$ & 3150 kJ/kg \\
+  $q_{\tn{out}}$ & 1920 kJ/kg \\
+  $w_{\tn{net}}$ & 1230 kJ/kg \\
+  $\eta_{\tn{th}}$ & 39.1\% \\
+  \hline
+  \end{tabular}
+}
