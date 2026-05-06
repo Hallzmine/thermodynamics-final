@@ -37,6 +37,8 @@ The Rankine cycle consists of a boiler, a turbine, a condenser, and a pump, in a
 
 The Rankine cycle consists of two state changes, one in the boiler, and one in the condenser. In the boiler the liquid is converted to a saturated vapor and the saturated vapor in the condenser is converted back into a saturated liquid. Heat is added in the boiler, the turbine outputs work, the condenser outputs heat, and work is done on the system by the pump. The pressure is constant from the output of the pump through the boiler to the input of the turbine. The turbine decreases the pressure, this decreased pressure is constant from the output of the turbine through the condenser to the input of the pump. The pump increases the pressure to restart the cycle. The liquid is heated in the boiler and then is cooled through the turbine. The temperature stays constant through the condenser. The temperature rises from the output of the pump to the boiler, due to increasing pressure and work done on the system by the pump. The cycle is isentropic through the pump and through the turbine. These relationships are summarized in Table 1.
 
+The difference between an ideal and actual Rankine cycle is efficiency and reversibility. In an ideal Rankine cycle we can make the assumptions in Table \ref{tab:components}, whereas in an actual Rankine cycle all processes are polytropic and you will have heat and pressure loss at points where the ideal cycle assumes you would not. Friction and heat loss are two major places where efficiency is lost, fluid friction can decrease pressure \cite{E4U}.
+
 \begin{multicols}{2}
   \begin{figure}[H]
   \centering
@@ -214,7 +216,11 @@ In the specific context of the Rankine cycle, parametric studies can be conducte
 
 \section{Discussion}
 The parametric study performed on the ideal rankine cycle certainly revealed some key trends.  These trends are evident in figures 6-11  
+
 \section{Conclusion}
+
+The study was successful in its objective of analyzing a Rankine cycle power plant using Engineering Equation Solver. The ideal Rankine cycle used in the study resulted in a thermal efficiency of 39.1\% and a net work output of 1230 kJ/kg. The parametric study demonstrated that the pressure and heat of the medium exiting the boiler improved the thermal efficiency and increased the work output of the system. It also demonstrated that an increased pressure of the medium exiting the condenser degraded the thermal efficiency and decreased the work output of the system. The analysis of an ideal Rankine cycle provides interesting insight but may not be completely accurate to real examples like the nuclear reactor at Laguna Verde or the gas power plant in Sayreville. The real models have reduced performance; X and Y could reduce this perfomance loss.
+
 
 \bibliographystyle{ieeetr} 
 \bibliography{references} 
