@@ -215,6 +215,7 @@ In the specific context of the Rankine cycle, parametric studies can be conducte
 
 
 \section{Discussion}
+\subsection{Key Trends}
 The parametric studies performed on the ideal Rankine cycle certainly revealed some key trends.  These trends are evident in Figure 6 and Figure 7, where both turbine work and thermal efficiency increased as pressure exiting the boiler increased.  Turbine work eventually reached a constant state once boiler pressure reached 14000kPa, indicting that this pressure property has a non-linear affect on the turbine's mechanical energy output.  Meanwhile, the thermal efficiency of the system continuously increased while concaving downward, following a logarithmic path.  Thus, this specific parametric study shows an inherent correlation bewteen a boiler pressure increase, with greater turbine work and with improved thermal efficiency.
 
 On the contrary, as evidenced by Figure 10 and Figure 11, turbine work and thermal efficeincy are effectivly inversely proportional to chnages in pressure leaving the condenser.  As pressure leaving the condensor is incrementally increased, both the work done by the turbine and the thermal efficiency of the system experience a decline.  Thus, this study proves that an increase in pressure at the condenser outlet negatively affects the top two key metrics of a Rankine cycle.
@@ -224,10 +225,17 @@ The last parametric study performed was an incremental increase in temperature a
 It is worth noting that work done by the turbine and thermal efficiency were chosen as the key metrics in the Rankine cycle, since they both uniquely represent the goals of the cycle: resource conservation and revenue generation through mechanical energy output.
 
 
+\subsection{Improvements}
+
+A method to increase the thermal efficiency of an actual Rankine cycle is to superheat the medium; that is heating the medium past its vapor point. This increases the temperature exiting the boiler, which, as shown by the parametric study, increases the performance of the cycle. One reason for this is that the quality of the medium is higher through the turbine, decreasing moisture content which interacts with the blades \cite{MIT2}.
+
+Another method to increase the performance of an actual Rankine cycle is to bleed steam from the turbine to increase the temperature of the water entering the boiler. This should reduce the required heat input, $q_{\tn{in}}$, which in turn should increase the thermal efficiency.
+
+A third option, inspired by the usage of the Rankine cycle in the Sayreville Energy Center, is to use a second Rankine cycle as a bottoming cycle on the primary Rankine cycle. By taking the output heat, $q_{\tn{out}}$, from the condenser and using it as the heat input, $q_{\tn{in}}$, for a new cycle, the loss from the first cycle is converted into useful energy and eventually increased work output. The second cycle would likely require a different medium, such as refigerant.
 
 \section{Conclusion}
 
-The study was successful in its objective of analyzing a Rankine cycle power plant using Engineering Equation Solver. The ideal Rankine cycle used in the study resulted in a thermal efficiency of 39.1\% and a net work output of 1230 kJ/kg. The parametric study demonstrated that the pressure and heat of the medium exiting the boiler improved the thermal efficiency and increased the work output of the system. It also demonstrated that an increased pressure of the medium exiting the condenser degraded the thermal efficiency and decreased the work output of the system. The analysis of an ideal Rankine cycle provides interesting insight but may not be completely accurate to real examples like the nuclear reactor at Laguna Verde or the gas power plant in Sayreville. The real models have reduced performance; X and Y could reduce this perfomance loss.
+The study was successful in its objective of analyzing a Rankine cycle power plant using Engineering Equation Solver. The ideal Rankine cycle used in the study resulted in a thermal efficiency of 39.1\% and a net work output of 1230 kJ/kg. The parametric study demonstrated that the pressure and heat of the medium exiting the boiler improved the thermal efficiency and increased the work output of the system. It also demonstrated that an increased pressure of the medium exiting the condenser degraded the thermal efficiency and decreased the work output of the system. The analysis of an ideal Rankine cycle provides interesting insight but may not be completely accurate to real examples like the nuclear reactor at Laguna Verde or the gas power plant in Sayreville. The real models have reduced performance; superheating or preheating could reduce this perfomance loss.
 
 \newpage
 
